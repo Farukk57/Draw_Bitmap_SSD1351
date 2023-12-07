@@ -63,4 +63,4 @@ If you have the problem that the array is too large, i recommend formatting the 
 Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
-This library is licensed under the MIT License.
+This library is licensed under the GNU GPL License.
