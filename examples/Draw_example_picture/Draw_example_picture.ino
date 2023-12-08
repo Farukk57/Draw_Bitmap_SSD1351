@@ -1,7 +1,5 @@
 // Include necessary libraries
-#include <SPI.h>
 #include "Ucglib.h"
-#include <avr/pgmspace.h>
 #include "draw_bitmap_ssd1351.h"
 
 // Create an instance of the Ucglib_SSD1351_18x128x128_SWSPI class
