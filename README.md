@@ -56,7 +56,7 @@ Upload the sketch to your Arduino board.
 ## Image conversion
 For the image conversion, I recommend the website: "https://notisrac.github.io/FileToCArray/". Be sure to use 
 1. Code format: Hex
-2. Palette mod: RRRRRGGGGGGBBBBB (2byte/pixel), R5G6B5
+2. Palette mod: 16bit RRRRRGGGGGGBBBBB (2byte/pixel), R5G6B5
 3. Endianness: Little-endian
 4. static; const; Data type: uint16_t; PROGMEM
 
