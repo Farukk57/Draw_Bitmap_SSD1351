@@ -15,9 +15,7 @@ This library allows you to draw RGB bitmaps on an SSD1351 OLED display using the
 1. Include the required libraries in your Arduino sketch:
 
 ```cpp
-#include <SPI.h>
 #include "Ucglib.h"
-#include <avr/pgmspace.h>
 #include "draw_bitmap_ssd1351.h"
 ```
 Create an instance of the Ucglib_SSD1351_18x128x128_SWSPI class with your preferred pin configurations:
@@ -30,15 +28,14 @@ Create an instance of the DrawBitmapSSD1351 class:
 ```cpp
 DrawBitmapSSD1351 drawBmp;
 ```
-Create an array with your image data (replace "Bitmap image array" with your actual image data array). 
-For the image conversion, I recommend the website: "https://notisrac.github.io/FileToCArray/":
+Create an array with your image data (replace "Bitmap image array" with your actual image data array):
 
 ```cpp
 static const uint16_t example[] PROGMEM = {
     // Your image data goes here
 };
 ```
-In the setup function, initialize the serial communication, the Ucglib display, and draw the RGB bitmap:
+In the setup function, initialize the serial communication, the Ucglib display, and draw the RGB bitmap. In the RGBBitmap function, you have 5 Parameters, the first two Parameters are for the X and Y position of the Image on the Display, and the third and fourth parameters are for the height and width of your converted Image. The last parameter is for your bitmap array, input the name you gave the array. 
 
 ```cpp
 void setup(void) {
@@ -48,13 +45,20 @@ void setup(void) {
     ucg.begin(UCG_FONT_MODE_NONE);
     ucg.clearScreen();
 
-    // HAS TO BE EXPLAINED FURTHER
+    // 1. pos_x, 2. pos_y 3. height, 4. width, 5. image array variable
     drawBmp.RGBBitmap(30, 34, 59, 67, example);
 
     Serial.println("Image drawn");
 }
 ```
 Upload the sketch to your Arduino board.
+
+## Image conversion
+For the image conversion, I recommend the website: "https://notisrac.github.io/FileToCArray/". Be sure to use 
+1. Code format: Hex
+2. Palette mod: RRRRRGGGGGGBBBBB (2byte/pixel), R5G6B5
+3. Endianness: Little-endian
+4. static; const; Data type: uint16_t; PROGMEM
 
 ## Problems
 If you have the problem that the array is too large, i recommend formatting the converted image using this website: "https://formatter.org/cpp-formatter"
